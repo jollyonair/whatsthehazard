@@ -1,9 +1,8 @@
 'use strict';
 (() => {
-  const defaultHome = 'https://jollyonair.github.io/whatsthehazard/';
-  const local = !/^https?:$/.test(location.protocol) || /^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/.test(location.hostname);
-  const home = local ? defaultHome : new URL('./', document.baseURI).href;
-  const current = local ? new URL(location.pathname.split('/').pop() || './', defaultHome) : new URL(location.href);
+  const defaultHome = 'https://whatsthehazard.org/';
+  const home = defaultHome;
+  const current = new URL(location.pathname.split('/').pop() || './', home);
   current.search = ''; current.hash = '';
   if (current.pathname.endsWith('/index.html')) current.pathname = current.pathname.slice(0, -10);
   const pageUrl = current.href;

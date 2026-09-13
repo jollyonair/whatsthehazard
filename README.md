@@ -4,19 +4,19 @@ A portable static website for [jollyonair/whatsthehazard](https://github.com/jol
 
 ## Apply this update
 
-The `whatsthehazard-action-update.zip` archive contains ten changed/new files directly at the correct repository paths. It has no enclosing website folder. Open a terminal inside your existing Git repository and run:
+The `whatsthehazard-domain-update.zip` archive contains nine changed/new files at repository-relative paths, with no enclosing website folder. Open a terminal inside your existing Git repository and run:
 
 ```sh
-unzip -o ~/Downloads/whatsthehazard-action-update.zip -d .
-git rm --ignore-unmatch reports/hazard-reduction-burning-v2.pdf
-git add index.html air-quality.html questions.html research.html act.html updates.html styles.css site.js README.md reports/hazard-reduction-burning.pdf
-git commit -m "Add review request, MP tools and sharing; clean report naming"
+git pull --ff-only
+unzip -o ~/Downloads/whatsthehazard-domain-update.zip -d .
+git add index.html air-quality.html questions.html research.html act.html updates.html site.js README.md CNAME
+git commit -m "Use whatsthehazard.org as the website domain"
 git push
 ```
 
-Use ordinary extraction, without `-j`: the PDF belongs inside `reports`. The obsolete working-name PDF is removed by the `git rm` command. The report’s content and source links are unchanged. Matching website files are replaced; existing Git history, settings and any custom-domain configuration are retained. This download has not been pushed to GitHub.
+Pull first to include any CNAME commit created through GitHub Pages settings. The download contains the six pages, sharing script, this README and CNAME. Existing assets, styles and the report are retained. This download has not been pushed to GitHub.
 
-The full `whatsthehazard-website.zip` archive also places files directly at repository paths and includes all assets. Use it for a fresh copy; use the smaller action-update archive for the published repository. Keep `index.html` at the repository root.
+The full `whatsthehazard-website.zip` archive includes all assets and the report, also at repository-relative paths. Keep `index.html` at the repository root.
 
 GitHub Pages should remain configured to deploy from `main` and `/(root)`. Check the Actions tab if its build fails. [Official publishing-source guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
@@ -29,6 +29,7 @@ GitHub Pages should remain configured to deploy from `main` and `/(root)`. Check
 - `air-quality.html`: official monitoring and fire information for all states and territories, plus independent services.
 - `updates.html`: report date, website changes and resource-review dates.
 - `site.js`: optional native sharing, clipboard and email-draft enhancements.
+- `CNAME`: GitHub Pages custom domain, `whatsthehazard.org`.
 - `styles.css`: responsive and print layouts.
 - `reports/hazard-reduction-burning.pdf`: the report’s permanent filename.
 - `assets`, icons and `ASSETS.md`: illustration, favicon assets and provenance.
@@ -46,7 +47,7 @@ The AEC finder warns about changing boundaries and overlapping postcodes. Reader
 
 ## Sharing
 
-Native sharing is used where available; otherwise the page link can be copied. If clipboard access is unavailable or rejected, the link or draft is selected for manual copying. Email sharing and a visible link remain available without JavaScript. Cancellation does not claim that a message was sent. Shared URLs omit query strings and fragments. Live pages use their own host, so a later custom domain works automatically; local previews use the published GitHub Pages URL.
+Native sharing is used where available; otherwise the page link can be copied. If clipboard access is unavailable or rejected, the link or draft is selected for manual copying. Email sharing and a visible link remain available without JavaScript. Cancellation does not claim that a message was sent. Shared URLs omit query strings and fragments. Shared page links and MP drafts use `https://whatsthehazard.org/`, including during local preview or visits through an older address. Each page has its own canonical address and Open Graph URL. Relative asset and navigation paths continue to work locally.
 
 Relevant API documentation: [native sharing](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share), [clipboard writing](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText).
 
@@ -60,4 +61,6 @@ Commissioned economic reports and academic funding disclosures are distinguished
 
 ## Custom domain
 
-The proposed domain is `whatsthehazard.com.au`. Once registered and under your control, configure it in Settings → Pages → Custom domain using [GitHub’s official DNS guidance](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). This update does not change domain settings.
+The purchased domain is `whatsthehazard.org`. The root CNAME file contains this name. In GitHub Settings → Pages → Custom domain, save the same domain. VentraIP DNS Hosting should have four root A records (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and a `www` CNAME pointing to `jollyonair.github.io`.
+
+GitHub handles TLS certificate issuance and renewal. Enable Enforce HTTPS when the DNS check and certificate provisioning finish. Website file changes do not make DNS propagation or certificate issuance complete. See [GitHub’s custom-domain guidance](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
