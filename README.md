@@ -1,94 +1,63 @@
 # What’s the Hazard?
 
-A portable, static website for GitHub Pages. The site name is **What’s the Hazard?**, with proposed domain `whatsthehazard.com.au`. It includes the September 2026 v2 report (16 pages, 27 linked references), a Q&A page addressing 13 strong objections, a research directory linking all 27 report references and seven additional readings, a practical Australian air-quality and fire-information directory, an editorial illustration and browser icons.
+A portable static website for [jollyonair/whatsthehazard](https://github.com/jollyonair/whatsthehazard), published through GitHub Pages. It includes the September 2026 evidence report (16 pages, 27 linked references), a Q&A, Australian air-quality resources, a research directory and practical ways to request an independent review.
 
-There is no installation, build command, JavaScript, external font service or analytics service. Open `index.html` in a browser to preview it. All local assets use relative paths, so the same files work at `https://jollyonair.github.io/whatsthehazard/` or a custom domain.
+## Apply this update
 
-## Update the published website
-
-The website has been published in [jollyonair/whatsthehazard](https://github.com/jollyonair/whatsthehazard). This download contains source files; it contains no Git history.
-
-Copy the **contents** of the extracted `whatsthehazard-site` folder into your existing local repository, where `index.html` already lives. Replace the matching files and add `research.html`. Keep your existing Git history, repository settings and any custom-domain configuration. Do not nest the extracted folder inside the repository.
-
-The smaller research-update ZIP contains only six changed/new files: `research.html`, `index.html`, `questions.html`, `air-quality.html`, `styles.css` and this README. The v2 PDF and image assets are unchanged.
-
-From your existing repository folder:
+The `whatsthehazard-action-update.zip` archive contains ten changed/new files directly at the correct repository paths. It has no enclosing website folder. Open a terminal inside your existing Git repository and run:
 
 ```sh
-git status
-git add research.html index.html questions.html air-quality.html styles.css README.md
-git commit -m "Add linked research directory and further assessment questions"
+unzip -o ~/Downloads/whatsthehazard-action-update.zip -d .
+git rm --ignore-unmatch reports/hazard-reduction-burning-v2.pdf
+git add index.html air-quality.html questions.html research.html act.html updates.html styles.css site.js README.md reports/hazard-reduction-burning.pdf
+git commit -m "Add review request, MP tools and sharing; clean report naming"
 git push
 ```
 
-GitHub Pages will rebuild from your existing publishing branch. Check the Research link on all four pages, the bibliography and the PDF. Check the repository's Actions tab if the deployment fails. No update has been pushed from this download.
+Use ordinary extraction, without `-j`: the PDF belongs inside `reports`. The obsolete working-name PDF is removed by the `git rm` command. The report’s content and source links are unchanged. Matching website files are replaced; existing Git history, settings and any custom-domain configuration are retained. This download has not been pushed to GitHub.
 
-## Publish a fresh copy on GitHub Pages
+The full `whatsthehazard-website.zip` archive also places files directly at repository paths and includes all assets. Use it for a fresh copy; use the smaller action-update archive for the published repository. Keep `index.html` at the repository root.
 
-1. Unzip the download and open a terminal **inside the `whatsthehazard-site` folder**, where `index.html` is located.
-2. Use this initialisation workflow only for an empty repository. To update the existing published repository, use the instructions above.
-3. Run these commands inside the extracted folder (the folder containing `index.html`):
+GitHub Pages should remain configured to deploy from `main` and `/(root)`. Check the Actions tab if its build fails. [Official publishing-source guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
-```sh
-git init
-git add .
-git commit -m "Publish website, research directory, Q&A and v2 report"
-git branch -M main
-git remote add origin https://github.com/jollyonair/whatsthehazard.git
-git push -u origin main
-```
+## Files
 
-GitHub may ask you to authenticate. Use your normal Git credential manager, GitHub CLI login, or SSH setup; do not put a token or password inside this folder. If Git asks for your author name and email, configure them before committing. GitHub provides a private no-reply email address in account Settings → Emails if you prefer to use that in public commits.
+- `index.html`: summary, evidence, commissioning and the short request banner.
+- `act.html`: seven practical requests, official MP resources and an editable email draft.
+- `research.html`: all 27 report references, seven additional readings and researcher records.
+- `questions.html`: strong objections, responses and limitations.
+- `air-quality.html`: official monitoring and fire information for all states and territories, plus independent services.
+- `updates.html`: report date, website changes and resource-review dates.
+- `site.js`: optional native sharing, clipboard and email-draft enhancements.
+- `styles.css`: responsive and print layouts.
+- `reports/hazard-reduction-burning.pdf`: the report’s permanent filename.
+- `assets`, icons and `ASSETS.md`: illustration, favicon assets and provenance.
+- `.nojekyll`: enables direct static-file serving through GitHub Pages.
 
-4. In the repository, choose **Settings → Pages**.
-5. Under **Build and deployment**, select **Deploy from a branch**.
-6. Select **main** and **/(root)**, then click **Save**.
-7. Wait for the Pages deployment to finish. The expected address is `https://jollyonair.github.io/whatsthehazard/`; the Pages settings screen will show the published URL. The site has not been pushed or published from this download.
-8. Visit the live site. Check the navigation, Q&A expansion, state/territory directory, one evidence source and the PDF links. If there is a deployment problem, check the repository's **Actions** tab for the Pages build result.
+There is no installation or build step, external font service, backend, analytics or third-party script. Open `index.html` to preview the site locally. Relative paths work at the GitHub Pages project URL or a custom domain.
 
-Official instructions: [Configure a publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+## Requests and email
 
-### Alternative: upload without Git
+The seven website requests unpack the five grouped recommendations in the report: its independent comparison separates strategy comparison from complete accounting, and its habitat/alternatives recommendation separates ecological recovery from trials and household support. No additional substantive recommendation is attributed to the PDF.
 
-GitHub's repository file-upload interface can also publish these static files. Upload all extracted files and folders, including `index.html`, `air-quality.html`, `questions.html`, `research.html`, `styles.css`, the icon files, `assets` and `reports`. Keep them at the repository root. Then enable Pages as described above. The terminal method above also includes the `.nojekyll` file automatically. Push the extracted website files rather than the ZIP itself.
+Readers choose an office through official electorate and member resources. The recipient email field is optional; a blank address opens a draft so the reader can add it in their email app. The editable subject and body are encoded into the mailto link. Sending is handled by the reader’s email app, not this website. The page does not transmit or store their message or recipient address. With JavaScript disabled, readers can copy the draft manually; the email link opens the original template.
 
-## Add a custom domain later
+The AEC finder warns about changing boundaries and overlapping postcodes. Readers should confirm the current representative. Queensland and WA Parliament pages and the federal member directory restricted automated retrieval during preparation; they remain linked as official resources. Confirm office contact details at the provider.
 
-First make sure the default GitHub Pages URL works. The proposed domain is `whatsthehazard.com.au`. Once registered and under your control, configure it in the repository's **Settings → Pages → Custom domain**, following GitHub's current DNS instructions. Domain ownership, verification and DNS values depend on whether you use an apex domain or a subdomain. No domain has been registered, checked for availability or configured in this download.
+## Sharing
 
-[GitHub's custom-domain guidance](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+Native sharing is used where available; otherwise the page link can be copied. If clipboard access is unavailable or rejected, the link or draft is selected for manual copying. Email sharing and a visible link remain available without JavaScript. Cancellation does not claim that a message was sent. Shared URLs omit query strings and fragments. Live pages use their own host, so a later custom domain works automatically; local previews use the published GitHub Pages URL.
 
-## Edit and update
+Relevant API documentation: [native sharing](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share), [clipboard writing](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText).
 
-- `index.html`: name, navigation, page copy and source links.
-- `air-quality.html`: monitoring, fire warnings, planned-burning information and smoke health resources.
-- `questions.html`: arguments supporting HRB, evidence-based responses and limits, with source links.
-- `research.html`: all 27 v2 references, seven additional readings, public explanations, researcher profiles and six questions for fuller assessment.
-- `styles.css`: colours, spacing, typography and mobile/print layouts.
-- `favicon.svg` and `favicon.ico`: question-mark browser icons.
-- `assets/favicon-32.png` and `assets/apple-touch-icon.png`: PNG icon versions.
-- `assets/bushland-illustration.webp`: compressed website illustration.
-- `assets/bushland-illustration.png`: original illustration for reuse.
-- `ASSETS.md`: image prompt and icon details.
-- `reports/hazard-reduction-burning-v2.pdf`: the downloadable report.
-- `.nojekyll`: tells GitHub Pages to serve the static files without Jekyll processing. Keep it.
+## Dates and editorial scope
 
-After editing, open `index.html` locally to check the result, then:
+Change the website date only after making an update. Record substantive changes in `updates.html`; record resource checks separately from evidence changes. A new website date does not assert that all external links or papers have been checked again. Provider timestamps remain authoritative for readings and warnings.
 
-```sh
-git add .
-git commit -m "Update website"
-git push
-```
+The report is a targeted evidence review, not a systematic review or a national calculation of net benefit or harm. The directory includes supporting findings, critical evidence and published disagreement. Sources are labelled by type and geographic scope. Researcher and organisation links imply no endorsement or affiliation. Additional readings do not change the report’s bibliography.
 
-When you replace the report, also update its version, date, page count, reference count and file size in `index.html`. Keep any new report filename and both page links in agreement.
+Commissioned economic reports and academic funding disclosures are distinguished. CBA in Deloitte’s study means cost–benefit analysis. Documented assumptions, omissions and commissioning warrant public scrutiny; this website does not claim that hidden campaigning or a Commonwealth Bank funding connection has been established. The public report contains no identifying personal example.
 
-## Editorial scope
+## Custom domain
 
-The site presents a targeted evidence review, not a systematic review or a reanalysis of raw data. The public report does not identify the user's personal example. Commissioned economic reports are distinguished from academic research funding. In the Deloitte document, CBA means cost–benefit analysis; it is not evidence of a Commonwealth Bank funding connection. The site makes no claim that a national net harm, hidden sponsorship or astroturfing has been established.
-
-The PDF provides fuller references, methods and limitations. Check new evidence before extending the findings to other regions or programs. No claim of affiliation with a research institute, emergency agency or government is made by this website.
-
-The research directory is a selected reading guide, not a systematic or exhaustive bibliography. Original v2 reference numbers are preserved and all 27 references appear once in the directory. Additional readings are labelled separately and do not change the v2 PDF. Papers, agency guidance, commissioned reports, perspectives and professional responses have different purposes; each is labelled. Inclusion of a researcher or organisation does not imply endorsement. Water and carbon entries include mixed findings; broader assessment questions do not imply a quantified additional harm. Some publisher pages may need subscription access; repository records and author-uploaded papers are linked where identified. Access checks do not establish that every linked provider will remain available.
-
-The air-quality page links to providers instead of importing readings or warnings. It is a directory, not a live alert service. Resources cover every state and territory, plus IQAir, WAQI/AQICN and AirRater. Monitoring coverage varies. NSW Health is cited for the short health guidance and contact numbers. The SA EPA and WA DWER destinations were identified in public search results but blocked automated retrieval (HTTP 403); check those links manually when publishing, along with the other external services. Dynamic maps may need JavaScript on the provider's own site. Review directory links periodically and update the review date after checking them.
+The proposed domain is `whatsthehazard.com.au`. Once registered and under your control, configure it in Settings → Pages → Custom domain using [GitHub’s official DNS guidance](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). This update does not change domain settings.
