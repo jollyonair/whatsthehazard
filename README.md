@@ -1,19 +1,38 @@
 # What’s the Hazard?
 
-A portable, static website for GitHub Pages. The site name is **What’s the Hazard?**, with proposed domain `whatsthehazard.com.au`. It includes the September 2026 v2 report (16 pages, 27 linked references), a Q&A page addressing 13 strong objections, a practical Australian air-quality and fire-information directory, an editorial illustration and browser icons.
+A portable, static website for GitHub Pages. The site name is **What’s the Hazard?**, with proposed domain `whatsthehazard.com.au`. It includes the September 2026 v2 report (16 pages, 27 linked references), a Q&A page addressing 13 strong objections, a research directory linking all 27 report references and seven additional readings, a practical Australian air-quality and fire-information directory, an editorial illustration and browser icons.
 
 There is no installation, build command, JavaScript, external font service or analytics service. Open `index.html` in a browser to preview it. All local assets use relative paths, so the same files work at `https://jollyonair.github.io/whatsthehazard/` or a custom domain.
 
-## Publish on GitHub Pages
+## Update the published website
+
+The website has been published in [jollyonair/whatsthehazard](https://github.com/jollyonair/whatsthehazard). This download contains source files; it contains no Git history.
+
+Copy the **contents** of the extracted `whatsthehazard-site` folder into your existing local repository, where `index.html` already lives. Replace the matching files and add `research.html`. Keep your existing Git history, repository settings and any custom-domain configuration. Do not nest the extracted folder inside the repository.
+
+The smaller research-update ZIP contains only six changed/new files: `research.html`, `index.html`, `questions.html`, `air-quality.html`, `styles.css` and this README. The v2 PDF and image assets are unchanged.
+
+From your existing repository folder:
+
+```sh
+git status
+git add research.html index.html questions.html air-quality.html styles.css README.md
+git commit -m "Add linked research directory and further assessment questions"
+git push
+```
+
+GitHub Pages will rebuild from your existing publishing branch. Check the Research link on all four pages, the bibliography and the PDF. Check the repository's Actions tab if the deployment fails. No update has been pushed from this download.
+
+## Publish a fresh copy on GitHub Pages
 
 1. Unzip the download and open a terminal **inside the `whatsthehazard-site` folder**, where `index.html` is located.
-2. Your repository is [jollyonair/whatsthehazard](https://github.com/jollyonair/whatsthehazard). It was confirmed empty during preparation. This ZIP contains source files ready for that repository; it contains no Git history.
+2. Use this initialisation workflow only for an empty repository. To update the existing published repository, use the instructions above.
 3. Run these commands inside the extracted folder (the folder containing `index.html`):
 
 ```sh
 git init
 git add .
-git commit -m "Publish website, Q&A and v2 report"
+git commit -m "Publish website, research directory, Q&A and v2 report"
 git branch -M main
 git remote add origin https://github.com/jollyonair/whatsthehazard.git
 git push -u origin main
@@ -31,7 +50,7 @@ Official instructions: [Configure a publishing source](https://docs.github.com/e
 
 ### Alternative: upload without Git
 
-GitHub's repository file-upload interface can also publish these static files. Upload all extracted files and folders, including `index.html`, `air-quality.html`, `questions.html`, `styles.css`, the icon files, `assets` and `reports`. Keep them at the repository root. Then enable Pages as described above. The terminal method above also includes the `.nojekyll` file automatically. Push the extracted website files rather than the ZIP itself.
+GitHub's repository file-upload interface can also publish these static files. Upload all extracted files and folders, including `index.html`, `air-quality.html`, `questions.html`, `research.html`, `styles.css`, the icon files, `assets` and `reports`. Keep them at the repository root. Then enable Pages as described above. The terminal method above also includes the `.nojekyll` file automatically. Push the extracted website files rather than the ZIP itself.
 
 ## Add a custom domain later
 
@@ -44,6 +63,7 @@ First make sure the default GitHub Pages URL works. The proposed domain is `what
 - `index.html`: name, navigation, page copy and source links.
 - `air-quality.html`: monitoring, fire warnings, planned-burning information and smoke health resources.
 - `questions.html`: arguments supporting HRB, evidence-based responses and limits, with source links.
+- `research.html`: all 27 v2 references, seven additional readings, public explanations, researcher profiles and six questions for fuller assessment.
 - `styles.css`: colours, spacing, typography and mobile/print layouts.
 - `favicon.svg` and `favicon.ico`: question-mark browser icons.
 - `assets/favicon-32.png` and `assets/apple-touch-icon.png`: PNG icon versions.
@@ -68,5 +88,7 @@ When you replace the report, also update its version, date, page count, referenc
 The site presents a targeted evidence review, not a systematic review or a reanalysis of raw data. The public report does not identify the user's personal example. Commissioned economic reports are distinguished from academic research funding. In the Deloitte document, CBA means cost–benefit analysis; it is not evidence of a Commonwealth Bank funding connection. The site makes no claim that a national net harm, hidden sponsorship or astroturfing has been established.
 
 The PDF provides fuller references, methods and limitations. Check new evidence before extending the findings to other regions or programs. No claim of affiliation with a research institute, emergency agency or government is made by this website.
+
+The research directory is a selected reading guide, not a systematic or exhaustive bibliography. Original v2 reference numbers are preserved and all 27 references appear once in the directory. Additional readings are labelled separately and do not change the v2 PDF. Papers, agency guidance, commissioned reports, perspectives and professional responses have different purposes; each is labelled. Inclusion of a researcher or organisation does not imply endorsement. Water and carbon entries include mixed findings; broader assessment questions do not imply a quantified additional harm. Some publisher pages may need subscription access; repository records and author-uploaded papers are linked where identified. Access checks do not establish that every linked provider will remain available.
 
 The air-quality page links to providers instead of importing readings or warnings. It is a directory, not a live alert service. Resources cover every state and territory, plus IQAir, WAQI/AQICN and AirRater. Monitoring coverage varies. NSW Health is cited for the short health guidance and contact numbers. The SA EPA and WA DWER destinations were identified in public search results but blocked automated retrieval (HTTP 403); check those links manually when publishing, along with the other external services. Dynamic maps may need JavaScript on the provider's own site. Review directory links periodically and update the review date after checking them.
